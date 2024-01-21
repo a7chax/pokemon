@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -45,6 +46,8 @@ dependencies {
     implementation("androidx.activity:activity:$activity_version")
     // Kotlin
     implementation("androidx.activity:activity-ktx:$activity_version")
+
+    implementation("com.squareup.picasso:picasso:2.8")
 
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-compiler:2.50")

@@ -4,7 +4,6 @@
 
   <uses-permission android:name="android.permission.INTERNET" />
 
-
   <application
     android:name=".MainApplication"
     android:allowBackup="true"
@@ -15,7 +14,14 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.Pokemon"
+    android:usesCleartextTraffic="true"
     tools:targetApi="31">
+    <activity
+      android:name=".presentation.catchpokemon.CatchPokemonActivity"
+      android:exported="false" />
+    <activity
+      android:name=".presentation.detailpokemon.DetailPokemonActivity"
+      android:exported="false" />
     <activity
       android:name=".presentation.pokemonlist.PokemonListActivity"
       android:exported="true">

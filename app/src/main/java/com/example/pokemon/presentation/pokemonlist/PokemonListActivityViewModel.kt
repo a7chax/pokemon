@@ -15,8 +15,8 @@ import javax.inject.Inject
 class PokemonListActivityViewModel @Inject constructor(
     val pokemonUseCase: PokemonUseCase
 ) : ViewModel() {
-    private val _fetchDataResult: MutableStateFlow<Pokemon?> = MutableStateFlow(null)
-    val fetchDataResult: StateFlow<Pokemon?> = _fetchDataResult
+    private val _fetchDataResult: MutableStateFlow<List<Pokemon>?> = MutableStateFlow(null)
+    val fetchDataResult: StateFlow<List<Pokemon>?> = _fetchDataResult
 
     init {
         viewModelScope.launch {

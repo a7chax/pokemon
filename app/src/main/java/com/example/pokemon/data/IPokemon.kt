@@ -1,32 +1,36 @@
 package com.example.pokemon.data
 
-import com.example.pokemon.domain.entities.Pokemon
+import com.example.pokemon.domain.entities.*
 
 data class PokemonListResponse(
-    val count: Int,
-    val next: String?,
-    val previous: String?,
-    val results: List<PokemonResult>
-){
-    data class PokemonResult(
-        val name: String,
-        val url: String
-    )
-}
+    val name: String,
+    val id: Int,
+    val images : String,
+    val type: List<String>,
+    val moves: List<String>
+)
 
 
 fun PokemonListResponse.toDomain() : Pokemon {
     return Pokemon(
-        count = count,
-        next = next,
-        previous = previous,
-        results = results.map { it.toDomain()  }
+        name = name,
+        id = id,
+        images = images,
+        type = type,
+        moves = moves
     )
 }
 
-fun PokemonListResponse.PokemonResult.toDomain() : Pokemon.PokemonResult {
-    return Pokemon.PokemonResult(
+data class PokemonRequest(
+    val name: String,
+    val pokemonName: String,
+    val images: String
+)
+
+fun PokemonRequestBody.toRequestBody() : PokemonRequest {
+    return PokemonRequest(
         name = name,
-        url = url
+        pokemonName = name,
+        images = images
     )
 }
