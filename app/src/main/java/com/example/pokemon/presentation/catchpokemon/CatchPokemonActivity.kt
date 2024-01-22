@@ -58,6 +58,13 @@ class CatchPokemonActivity :AppCompatActivity() {
         supportActionBar?.title = "Catching ${pokemonName}"
     }
 
+    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     fun setupView(pokemon: Pokemon, isCatch: Boolean){
         val imgPokemon: ImageView = findViewById(R.id.imgPokemonCatch)
@@ -65,18 +72,21 @@ class CatchPokemonActivity :AppCompatActivity() {
         val tiPokemonName: TextInputEditText = findViewById(R.id.etPokemonName)
         val tilPokemonName: TextInputLayout = findViewById(R.id.tiPokemonName)
         val btnAddPokemon: Button = findViewById(R.id.btnSave)
+        val tvPokemonName: TextView = findViewById(R.id.tvPokemonName)
 
         if (isCatch) {
             tilPokemonName.visibility = View.VISIBLE
             tvCongrats.text = "Congratulations, you have catch ${pokemon.name}."
+            tiPokemonName.setText("Mighty ${pokemon.name}")
 
         } else{
+            tvPokemonName.visibility = View.GONE
             tilPokemonName.visibility = View.GONE
             tvCongrats.text = "Sorry, you have failed to catch ${pokemon.name}."
+            btnAddPokemon.text = "Back to Pokemon List"
         }
 
 
-        tiPokemonName.setText("Mighty ${pokemon.name}")
 
         btnAddPokemon.setOnClickListener {
             val pokemonName = tiPokemonName.text.toString()
@@ -86,11 +96,16 @@ class CatchPokemonActivity :AppCompatActivity() {
                     pokemonName = pokemon.name,
                     images = pokemon.images
                 )
-                viewModel.addPokemon(requestBody)
-                startActivity(PokemonListActivity.getIntent(this))
+
+                viewModel.handleaddPokemon(requestBody)
+                lifecycleScope.launch {
+                    viewModel.addPokemonStatus.collect {
+                        startActivity(PokemonListActivity.getIntent(this@CatchPokemonActivity))
+                    }
+                }
                 Toast.makeText(this, "Pokemon added", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Pokemon name cannot be empty", Toast.LENGTH_SHORT).show()
+                startActivity(PokemonListActivity.getIntent(this@CatchPokemonActivity))
             }
         }
 

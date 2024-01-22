@@ -14,11 +14,11 @@ interface OnItemClickListener {
     fun onItemClick(pokemon: Pokemon)
 }
 
-class CustomAdapter(
+class PokemonListRecycleViewAdapter(
     private val dataSet: List<Pokemon>,
     private val onItemClickListener: OnItemClickListener
     ) :
-    RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+    RecyclerView.Adapter<PokemonListRecycleViewAdapter.ViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using

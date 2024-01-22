@@ -8,8 +8,12 @@ import javax.inject.Inject
 interface IPokemonUseCase {
     suspend fun fetchData() : Flow<Result<List<Pokemon>>>
     suspend fun catchPokemon() : Flow<Result<Boolean>>
-
     suspend fun addPokemon(pokemon: PokemonRequestBody): Flow<Result<String>>
+    suspend fun getMyPokemon() : Flow<Result<List<MyPokemon>>>
+
+    suspend fun deletePokemon(id: String): Flow<Result<Boolean>>
+
+    suspend fun updatePokemonName(pokemonUpdateName: PokemonUpdateName): Flow<Result<Boolean>>
 }
 
 class PokemonUseCase @Inject constructor(
@@ -26,5 +30,17 @@ class PokemonUseCase @Inject constructor(
 
     override suspend fun addPokemon(pokemon: PokemonRequestBody): Flow<Result<String>> {
         return pokemonRepository.addPokemon(pokemon)
+    }
+
+    override suspend fun getMyPokemon(): Flow<Result<List<MyPokemon>>> {
+        return pokemonRepository.getMyPokemon()
+    }
+
+    override suspend fun deletePokemon(id: String): Flow<Result<Boolean>> {
+        return pokemonRepository.deletePokemon(id)
+    }
+
+    override suspend fun updatePokemonName(pokemonUpdateName: PokemonUpdateName): Flow<Result<Boolean>> {
+        return pokemonRepository.updatePokemonName(pokemonUpdateName)
     }
 }

@@ -16,8 +16,19 @@
     android:textSize="24sp"
     app:layout_constraintBottom_toTopOf="@id/rv_pokemon"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
     android:paddingVertical="16dp"
+    />
+
+  <TextView
+    android:id="@+id/tv_my_pokemon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="My\n Pokemon"
+    android:textColor="@color/design_default_color_primary"
+    android:textSize="12sp"
+    android:layout_marginTop="16dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
     />
 
   <androidx.recyclerview.widget.RecyclerView

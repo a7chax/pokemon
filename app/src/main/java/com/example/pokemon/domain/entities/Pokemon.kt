@@ -17,3 +17,17 @@ data class PokemonRequestBody(
     val pokemonName: String,
     val images: String
 )
+
+@Parcelize
+data class MyPokemon(
+    val name: String,
+    val id: String,
+    val images : String,
+    val pokemonName: String
+) : Parcelable
+
+
+data class PokemonUpdateName(
+    val name: String,
+    val id: String
+)

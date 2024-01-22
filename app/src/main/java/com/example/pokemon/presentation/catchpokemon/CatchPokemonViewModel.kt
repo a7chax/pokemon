@@ -17,7 +17,7 @@ class CatchPokemonViewModel @Inject constructor(
     val catchPokemon: StateFlow<Boolean?> = _catchPokemon
 
     private val _addPokemon: MutableStateFlow<String?> = MutableStateFlow(null)
-    val addPokemon: StateFlow<String?> = _addPokemon
+    val addPokemonStatus: StateFlow<String?> = _addPokemon
 
     init {
         viewModelScope.launch {
@@ -34,7 +34,7 @@ class CatchPokemonViewModel @Inject constructor(
         }
     }
 
-    fun addPokemon(requestBody: PokemonRequestBody) {
+    fun handleaddPokemon(requestBody: PokemonRequestBody) {
         viewModelScope.launch {
             pokemonRepositories.addPokemon(requestBody).collect {
                 if (it.isSuccess) {

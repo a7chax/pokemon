@@ -12,4 +12,13 @@ interface ApiService {
 
     @POST("pokemon/mine")
     suspend fun addPokemon(@Body pokemonRequestBody: PokemonRequest) : String
+
+    @GET("pokemon/mine")
+    suspend fun getMyPokemon() : List<MyPokemonResponse>
+
+    @DELETE("pokemon/mine")
+    suspend fun deletePokemon(@Query("id") id: String) : Boolean
+
+    @PUT("pokemon/mine")
+    suspend fun updatePokemon( @Body pokemonRequestUpdateName: PokemonRequestUpdateName   ) : Boolean
 }

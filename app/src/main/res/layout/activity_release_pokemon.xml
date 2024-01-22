@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".presentation.catchpokemon.CatchPokemonActivity">
+  tools:context=".presentation.releasepokemon.ReleasePokemonActivity">
 
   <androidx.appcompat.widget.Toolbar
     android:id="@+id/toolbar"
@@ -15,13 +15,11 @@
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:layout_constraintTop_toTopOf="parent"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:title="@string/app_name"
+    app:title="Release Pokemon"
     app:titleTextColor="@android:color/white" />
 
-
-
   <ImageView
-    android:id="@+id/imgPokemonCatch"
+    android:id="@+id/imgPokemonRelease"
     android:layout_width="0dp"
     android:layout_height="240dp"
     android:layout_marginStart="16dp"
@@ -35,7 +33,7 @@
     />
 
   <TextView
-    android:id="@+id/tvCongratulations"
+    android:id="@+id/tvTryToRelease"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
@@ -43,55 +41,20 @@
     android:layout_marginEnd="16dp"
     android:textColor="@android:color/black"
     android:textSize="24sp"
-    android:text="Congratulations! You caught a"
+    android:text="Try To Release Pokemon"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imgPokemonCatch"/>
-
-  <TextView
-    android:id="@+id/tvPokemonName"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="24dp"
-    android:layout_marginEnd="16dp"
-    android:textColor="@android:color/black"
-    android:textSize="16sp"
-    android:text="Give a name to your pokemon"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tvCongratulations"/>
-
-
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/tiPokemonName"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="16dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tvPokemonName">
-
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/etPokemonName"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      />
-  </com.google.android.material.textfield.TextInputLayout>
+    app:layout_constraintTop_toBottomOf="@id/imgPokemonRelease"/>
 
   <Button
-    android:id="@+id/btnSave"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
+    android:id="@+id/btnReleasePokemon"
+    android:layout_width="0dp"
     android:layout_marginHorizontal="16dp"
-    android:text="Add Pokemon"
-    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:text="Release Pokemon"
     app:layout_constraintEnd_toEndOf="parent"
-     />
-
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

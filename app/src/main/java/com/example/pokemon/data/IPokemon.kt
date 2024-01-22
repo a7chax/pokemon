@@ -21,16 +21,51 @@ fun PokemonListResponse.toDomain() : Pokemon {
     )
 }
 
+
 data class PokemonRequest(
     val name: String,
     val pokemonName: String,
     val images: String
 )
 
+
+
+
 fun PokemonRequestBody.toRequestBody() : PokemonRequest {
     return PokemonRequest(
         name = name,
-        pokemonName = name,
+        pokemonName = pokemonName,
         images = images
     )
 }
+
+
+data class MyPokemonResponse(
+    val name: String,
+    val id: String,
+    val images : String,
+    val pokemonName: String
+)
+
+fun MyPokemonResponse.toDomain() : MyPokemon {
+    return MyPokemon(
+        name = name,
+        id = id,
+        images = images,
+        pokemonName = pokemonName
+    )
+}
+
+
+data class PokemonRequestUpdateName (
+    val id: String,
+    val name: String,
+)
+
+fun PokemonUpdateName.toRequestBody() : PokemonRequestUpdateName {
+    return PokemonRequestUpdateName(
+        id = id,
+        name = name
+    )
+}
+

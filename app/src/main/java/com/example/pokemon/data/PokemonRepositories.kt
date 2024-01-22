@@ -67,4 +67,62 @@ class PokemonRepositories @Inject constructor(
         }
     }
 
+    override fun getMyPokemon(): Flow<Result<List<MyPokemon>>> {
+        return flow {
+            remoteDataSource.getMyPokemon()
+                .map { result ->
+                    if(result.isSuccess){
+                        val myPokemon = result.getOrNull()
+                        if (myPokemon != null) {
+                            Result.success(myPokemon.map { it.toDomain() })
+                        } else {
+                            Result.failure(Exception("Pokemon is null"))
+                        }
+                    }else{
+                        Result.failure(result.exceptionOrNull()!!)
+                    }
+                }.collect { emit(it)
+            }
+        }
+    }
+
+
+    override fun deletePokemon(id: String): Flow<Result<Boolean>> {
+        return flow {
+            remoteDataSource.deletePokemon(id)
+                .map { result ->
+                    if(result.isSuccess){
+                        val deletePokemon = result.getOrNull()
+                        if (deletePokemon != null) {
+                            Result.success(deletePokemon)
+                        } else {
+                            Result.failure(Exception("Pokemon is null"))
+                        }
+                    }else{
+                        Result.failure(result.exceptionOrNull()!!)
+                    }
+                }.collect { emit(it)
+            }
+        }
+    }
+
+    override fun updatePokemonName(pokemonUpdateName: PokemonUpdateName): Flow<Result<Boolean>> {
+        return flow {
+            remoteDataSource.updatePokemonName(pokemonUpdateName.toRequestBody())
+                .map { result ->
+                    if(result.isSuccess){
+                        val updatePokemonName = result.getOrNull()
+                        if (updatePokemonName != null) {
+                            Result.success(updatePokemonName)
+                        } else {
+                            Result.failure(Exception("Pokemon is null"))
+                        }
+                    }else{
+                        Result.failure(result.exceptionOrNull()!!)
+                    }
+                }.collect { emit(it)
+            }
+        }
+    }
+
 }

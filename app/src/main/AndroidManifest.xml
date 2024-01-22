@@ -17,6 +17,15 @@
     android:usesCleartextTraffic="true"
     tools:targetApi="31">
     <activity
+      android:name=".presentation.changepokemonname.ChangePokemonName"
+      android:exported="false" />
+    <activity
+      android:name=".presentation.releasepokemon.ReleasePokemonActivity"
+      android:exported="false" />
+    <activity
+      android:name=".presentation.mypokemon.MyPokemonActivity"
+      android:exported="false" />
+    <activity
       android:name=".presentation.catchpokemon.CatchPokemonActivity"
       android:exported="false" />
     <activity

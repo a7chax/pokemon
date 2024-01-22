@@ -22,7 +22,6 @@ class PokemonListActivityViewModel @Inject constructor(
         viewModelScope.launch {
             pokemonUseCase.fetchData().collect {
                 it.getOrNull()?.let { pokemon ->
-                    Log.d("TAG", "PokemonListActivityViewModel: $pokemon")
                     _fetchDataResult.value = pokemon
                 }
             }
